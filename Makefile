@@ -17,7 +17,7 @@ build-prod:
 	docker build -t ${CI_PROJECT_NAME}:${CI_COMMIT_TAG} -f Dockerfile .
 
 clean-pyc:
-    find . -name '*.pyc' -exec rm --force {} +
-    find . -name '*.pyo' -exec rm --force {} +
-   name '*~' -exec rm --force  {}
+	find . -name '*.pyc' -exec rm --force {} +
+	find . -name '*.pyo' -exec rm --force {} +
+	name '*~' -exec rm --force  {}
 
