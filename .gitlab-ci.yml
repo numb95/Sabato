@@ -1,0 +1,16 @@
+image: docker:19.03.12
+
+variables:  
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+services:
+  - docker:19.03.12-dind
+
+before_script:
+  - docker info
+
+build:
+  stage: build
+  image: numb95/gitlab-ci-deploy-tools
+  script:
+    - make build-prod
