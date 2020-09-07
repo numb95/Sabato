@@ -19,11 +19,11 @@ build-dev:
 	docker build -t folan -f Dockerfile.devel .
 
 build-prod:
-	export IMAGE_TAG=`echo ${CI_PROJECT_NAME} | sed -e 's/\(.*\)/\L\1/'`:${CI_COMMIT_TAG}
-	docker build -t $IMAGE_TAG -f Dockerfile .
-	docker tag $IMAGE_TAG:${CI_COMMIT_TAG} $IMAGE_TAG:latest
-	docker push $IMAGE_TAG:${CI_COMMIT_TAG}
-	docker push $IMAGE_TAG:latest
+	export IMAGE_TAG=`echo ${CI_PROJECT_NAME} | sed -e 's/\(.*\)/\L\1/'`
+	docker build -t ${IMAGE_TAG}:${CI_COMMIT_TAG} -f Dockerfile .
+	docker tag ${IMAGE_TAG}:${CI_COMMIT_TAG} ${IMAGE_TAG}:latest
+	docker push ${IMAGE_TAG}:${CI_COMMIT_TAG}
+	docker push ${IMAGE_TAG}:latest
 
 clean-pyc:
 	find . -name '*.pyc' -exec rm --force {} +
